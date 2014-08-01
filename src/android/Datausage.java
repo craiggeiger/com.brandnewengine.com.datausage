@@ -88,7 +88,7 @@ public class Datausage extends CordovaPlugin {
      */
     public String getDataUsage() {
         String dataNumber;
-        dataNumber = "Hello World."
+        dataNumber = "Hello World.";
         return platform;
     }
 
