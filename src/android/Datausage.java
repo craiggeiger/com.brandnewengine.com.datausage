@@ -65,7 +65,7 @@ public class Datausage extends CordovaPlugin {
               // Total Mobile data
               long totalMobile = mobileTxTime + mobileRxTime;
 
-              String result = "Reboot:" + msReboot + " totalMobile:" + totalMobile + " txMobile:" + msMobileTx + " rxMobile:" + msMobileRx;
+              String result = '{"Reboot":' + msReboot + ', "totalMobile":' + totalMobile + ', "txMobile":' + msMobileTx + ', "rxMobile":' + msMobileRx + '}';
 
 
 
