@@ -54,7 +54,7 @@ public class Datausage extends CordovaPlugin {
                 AccountManager am = AccountManager.get(this.cordova.getActivity());
 
                 //String result = "getDetails();"
-                String result = "Hello WORLD."
+                String result = "Hello WORLD.";
                 if (result != null) {
                     callbackContext.success(result);
                     return true;
