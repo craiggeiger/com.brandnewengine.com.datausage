@@ -35,6 +35,7 @@ import org.json.JSONArray;
 
 import android.content.Context;
 import android.os.SystemClock;
+import android.net.TrafficStats;
 
 public class Datausage extends CordovaPlugin {
 
@@ -49,18 +50,36 @@ public class Datausage extends CordovaPlugin {
         try {
             if (action.equals("getMobileData")) {
 
-                //String result = "getDetails();"
               long rebootTime = SystemClock.elapsedRealtime(); // last reboot i
-              int days = (int) (rebootTime / (1000*60*60*24));
-              String result = Int.toString(days);
+              //int days = (int) (rebootTime / (1000*60*60*24));  // convert ms into days
+              String msReboot = Long.toString(rebootTime);
+
+              // Get Mobile Transmitted data
+              long mobileTxTime = TrafficStats.getMobileTxPackets(); // last reboot i
+              String msMobileTx = Long.toString(mobileTxTime);
+
+              // Get Mobile Received data
+              long mobileRxTime = TrafficStats.getMobileRxPackets(); // last reboot i
+              String msMobileRx = Long.toString(mobileRxTime);
+
+              // Total Mobile data
+              long totalMobile = mobileTxTime + mobileRxTime;
+
+              String result = "Reboot:" + msReboot + " totalMobile:" + totalMobile + " txMobile:" + msMobileTx + " rxMobile:" + msMobileRx;
+
+
+
+
 
                 if (result != null) {
                     callbackContext.success(result);
                     return true;
                 }
             }
+
             callbackContext.error("Invalid action");
             return false;
+
         } catch (Exception e) {
             String s = "Exception: " + e.getMessage();
 
