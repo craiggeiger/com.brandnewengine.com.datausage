@@ -51,8 +51,8 @@ public class Datausage extends CordovaPlugin {
         try {
             if (action.equals("getMobileData")) {
 
-                //String result = "getDetails();"
-                String result = "Hello WORLD.";
+                String result = "getDetails();"
+
                 if (result != null) {
                     callbackContext.success(result);
                     return true;
