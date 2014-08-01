@@ -52,10 +52,8 @@ public class Datausage extends CordovaPlugin {
                 //String result = "getDetails();"
               long rebootTime = SystemClock.elapsedRealtime();
 
-                if (result != null) {
-                    callbackContext.success(rebootTime);
-                    return true;
-                }
+              callbackContext.success(rebootTime);
+              return true;
             }
             callbackContext.error("Invalid action");
             return false;
