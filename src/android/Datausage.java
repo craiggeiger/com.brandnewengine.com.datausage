@@ -34,7 +34,7 @@ import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 
 import android.content.Context;
-import android.os;
+import android.os.SystemClock;
 
 public class Datausage extends CordovaPlugin {
 
