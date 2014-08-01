@@ -34,9 +34,7 @@ import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 
 import android.content.Context;
-import android.telephony.TelephonyManager;
-import android.accounts.Account;
-import android.accounts.AccountManager;
+import android.os;
 
 public class Datausage extends CordovaPlugin {
 
@@ -51,10 +49,11 @@ public class Datausage extends CordovaPlugin {
         try {
             if (action.equals("getMobileData")) {
 
-                String result = "getDetails();"
+                //String result = "getDetails();"
+              long rebootTime = SystemClock.elapsedRealtime();
 
                 if (result != null) {
-                    callbackContext.success(result);
+                    callbackContext.success(rebootTime);
                     return true;
                 }
             }
