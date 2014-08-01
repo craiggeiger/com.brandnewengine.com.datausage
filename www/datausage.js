@@ -15,7 +15,7 @@ channel.waitForInitialization('onCordovaInfoReady');
  */
 function Datausage() {
     this.available = false;
-    this.dataUsage = null;
+    this.mobileData = null;
 
     var me = this;
 
@@ -25,7 +25,7 @@ function Datausage() {
             //TODO: CB-5105 native implementations should not return info.cordova
             var buildLabel = cordova.version;
             me.available = true;
-            me.dataUsage = info.platform;
+            me.mobileData = info.mobileData;
             channel.onCordovaInfoReady.fire();
         },function(e) {
             me.available = false;
@@ -41,8 +41,8 @@ function Datausage() {
  * @param {Function} errorCallback The function to call when there is an error getting the heading data. (OPTIONAL)
  */
 Datausage.prototype.getInfo = function(successCallback, errorCallback) {
-    argscheck.checkArgs('fF', 'Datausage.getInfo', arguments);
-    exec(successCallback, errorCallback, "Datausage", "getDataUsage", []);
+    argscheck.checkArgs('fF', 'Datausage.getMobileDataUsage', arguments);
+    exec(successCallback, errorCallback, "Datausage", "getMobileDataUsage", []);
 };
 
 module.exports = new Datausage();

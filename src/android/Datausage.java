@@ -33,9 +33,9 @@ import android.provider.Settings;
 public class Datausage extends CordovaPlugin {
     public static final String TAG = "Datausage";
 
-    public static String dataUsage;                            // Device OS
+    public static String mobileData;                            // Device OS
 
-    private static final String ANDROID_PLATFORM = "Hello World";
+    //private static final String ANDROID_PLATFORM = "Hello World";
 
     /**
      * Constructor.
@@ -52,7 +52,7 @@ public class Datausage extends CordovaPlugin {
      */
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
-        Datausage.dataUsage = getDataUsage();
+        Datausage.mobileData = getMobileDataUsage();
     }
 
     /**
@@ -64,10 +64,9 @@ public class Datausage extends CordovaPlugin {
      * @return                  True if the action was valid, false if not.
      */
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("getDataUsage")) {
+        if (action.equals("getMobileDataUsage")) {
             JSONObject r = new JSONObject();
-            r.put("dataUsage", Datausage.dataUsage);
-            //r.put("version", this.getOSVersion());
+            r.put("mobileData", Datausage.mobileData);
             callbackContext.success(r);
         }
         else {
@@ -86,70 +85,11 @@ public class Datausage extends CordovaPlugin {
      * 
      * @return
      */
-    public String getDataUsage() {
+    public String getMobileDataUsage() {
         String dataNumber;
         dataNumber = "Hello World.";
         return dataNumber;
     }
 
-
-
-
-    /**
-     * Get the OS name.
-     * 
-     * @return
-     */
-    public String getPlatform() {
-        String platform;
-        if (isAmazonDevice()) {
-            platform = AMAZON_PLATFORM;
-        } else {
-            platform = ANDROID_PLATFORM;
-        }
-        return platform;
-    }
-
-    /**
-     * Get the device's Universally Unique Identifier (UUID).
-     *
-     * @return
-     */
-    public String getUuid() {
-        String uuid = Settings.Secure.getString(this.cordova.getActivity().getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
-        return uuid;
-    }
-
-    public String getModel() {
-        String model = android.os.Build.MODEL;
-        return model;
-    }
-
-    /**
-     * Get the OS version.
-     *
-     * @return
-     */
-    public String getOSVersion() {
-        String osversion = android.os.Build.VERSION.RELEASE;
-        return osversion;
-    }
-
-    public String getTimeZoneID() {
-        TimeZone tz = TimeZone.getDefault();
-        return (tz.getID());
-    }
-
-    /**
-     * Function to check if the device is manufactured by Amazon
-     * 
-     * @return
-     */
-    public boolean isAmazonDevice() {
-        if (android.os.Build.MANUFACTURER.equals(AMAZON_DEVICE)) {
-            return true;
-        }
-        return false;
-    }
 
 }
