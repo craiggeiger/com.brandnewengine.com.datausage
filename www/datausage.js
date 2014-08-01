@@ -20,7 +20,7 @@ function Datausage() {
     var me = this;
 
     channel.onCordovaReady.subscribe(function() {
-        me.getInfo(function(info) {
+        me.getMobileDataUsage(function(info) {
             //ignoring info.cordova returning from native, we should use value from cordova.version defined in cordova.js
             //TODO: CB-5105 native implementations should not return info.cordova
             var buildLabel = cordova.version;
@@ -40,7 +40,7 @@ function Datausage() {
  * @param {Function} successCallback The function to call when the heading data is available
  * @param {Function} errorCallback The function to call when there is an error getting the heading data. (OPTIONAL)
  */
-Datausage.prototype.getInfo = function(successCallback, errorCallback) {
+Datausage.prototype.getMobileDataUsage = function(successCallback, errorCallback) {
     argscheck.checkArgs('fF', 'Datausage.getMobileDataUsage', arguments);
     exec(successCallback, errorCallback, "Datausage", "getMobileDataUsage", []);
 };
