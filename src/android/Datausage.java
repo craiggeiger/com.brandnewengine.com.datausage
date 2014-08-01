@@ -50,9 +50,10 @@ public class Datausage extends CordovaPlugin {
             if (action.equals("getMobileData")) {
 
                 //String result = "getDetails();"
-              long rebootTime = SystemClock.elapsedRealtime();
-              String result = Long.toString(rebootTime);
-              
+              long rebootTime = SystemClock.elapsedRealtime(); // last reboot i
+              int days = (int) (rebootTime / (1000*60*60*24));
+              String result = Int.toString(days);
+
                 if (result != null) {
                     callbackContext.success(result);
                     return true;
