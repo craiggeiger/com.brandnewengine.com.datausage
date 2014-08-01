@@ -16,81 +16,60 @@
        specific language governing permissions and limitations
        under the License.
 */
+
+
+
+
+
+
+
+
+
 package com.brandnewengine.plugins;
 
-import java.util.TimeZone;
-
-import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.CordovaInterface;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.apache.cordova.PluginResult;
 
-import android.provider.Settings;
+import org.json.JSONArray;
+
+import android.content.Context;
+import android.telephony.TelephonyManager;
+import android.accounts.Account;
+import android.accounts.AccountManager;
 
 public class Datausage extends CordovaPlugin {
-    
-    public static final String TAG = "Datausage";
 
-    public static String mobileData;                            // Device OS
+    private String getDetails() {
 
-    //private static final String ANDROID_PLATFORM = "Hello World";
+        String str = "hello world";
 
-    /**
-     * Constructor.
-     */
-    public Datausage() {
+        return str;
     }
 
-    /**
-     * Sets the context of the Command. This can then be used to do things like
-     * get file paths associated with the Activity.
-     *
-     * @param cordova The context of the main Activity.
-     * @param webView The CordovaWebView Cordova is running in.
-     */
-    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
-        super.initialize(cordova, webView);
-        Datausage.mobileData = getMobileDataUsage();
-    }
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {
+        try {
+            if (action.equals("getMobileDataUsage")) {
+                TelephonyManager tm = (TelephonyManager) this.cordova.getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+                AccountManager am = AccountManager.get(this.cordova.getActivity());
 
-    /**
-     * Executes the request and returns PluginResult.
-     *
-     * @param action            The action to execute.
-     * @param args              JSONArry of arguments for the plugin.
-     * @param callbackContext   The callback id used when calling back into JavaScript.
-     * @return                  True if the action was valid, false if not.
-     */
-    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("getMobileDataUsage")) {
-            JSONObject r = new JSONObject();
-            r.put("mobileData", Datausage.mobileData);
-            callbackContext.success(r);
-        }
-        else {
+                //String result = "getDetails();"
+                String result = "Hello WORLD."
+                if (result != null) {
+                    callbackContext.success(result);
+                    return true;
+                }
+            }
+            callbackContext.error("Invalid action");
+            return false;
+        } catch (Exception e) {
+            String s = "Exception: " + e.getMessage();
+
+            System.err.println(s);
+            callbackContext.error(s);
+
             return false;
         }
-        return true;
     }
-
-    //--------------------------------------------------------------------------
-    // LOCAL METHODS
-    //--------------------------------------------------------------------------
-
-
-    /**
-     * Get the data usage since last boot.
-     * 
-     * @return
-     */
-    public String getMobileDataUsage() {
-        String dataNumber;
-        dataNumber = "Hello World.";
-        return dataNumber;
-    }
-
-
 }
+

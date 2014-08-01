@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com.brandnewengine.plugins.datausage"
-    version="0.2.10">
-    <name>Datausage</name>
-    <description>Cordova Datausage Plugin</description>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="com.brandnewengine.plugins.datausage"
+        version="1.0.1">
+    
+    <name>Data Usage</name>
+    <description>tries to pull data usage since last reboot</description>
     <license>MIT</license>
     
-    <repo>https://github.com/craiggeiger/com.brandnewengine.com.plugins.datausage</repo>
-
-
-    <js-module src="www/datausage.js" name="datausage">
-        <clobbers target="datausage" />
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+    
+    <js-module src="www/datausage.js" name="Datausage">
+        <clobbers target="cordova.plugins.dataUsage" />
     </js-module>
-
-    <!-- android -->
+   
     <platform name="android">
+        
+        <source-file src="src/android/Datausage.java" target-dir="src/com/brandnewengine/plugins" />		
+        
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Datausage" >
-                <param name="android-package" value="com.brandnewengine.com.plugins.Datausage"/>
+            <feature name="Datausage">
+                <param name="android-package" value="com.brandnewengine.plugins.Datausage" />
             </feature>
         </config-file>
 
-        <source-file src="src/android/Datausage.java" target-dir="src/com/brandnewengine/plugins/datausage" />
-    </platform>
+     </platform>
 
 </plugin>
+
