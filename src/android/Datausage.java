@@ -50,22 +50,22 @@ public class Datausage extends CordovaPlugin {
         try {
             if (action.equals("getMobileData")) {
 
-              long rebootTime = SystemClock.elapsedRealtime(); // last reboot i
+              long rebootTime = SystemClock.elapsedRealtime(); // last reboot in ms
               //int days = (int) (rebootTime / (1000*60*60*24));  // convert ms into days
               String msReboot = Long.toString(rebootTime);
 
               // Get Mobile Transmitted data
-              long mobileTxTime = TrafficStats.getMobileTxPackets(); // last reboot i
+              long mobileTxTime = TrafficStats.getMobileTxBytes(); // transmitted reboot in ms
               String msMobileTx = Long.toString(mobileTxTime);
 
               // Get Mobile Received data
-              long mobileRxTime = TrafficStats.getMobileRxPackets(); // last reboot i
+              long mobileRxTime = TrafficStats.getMobileRxBytes(); // last reboot i
               String msMobileRx = Long.toString(mobileRxTime);
 
               // Total Mobile data
               long totalMobile = mobileTxTime + mobileRxTime;
 
-              String result = "{\"Reboot\":" + msReboot + ", \"totalMobile\":" + totalMobile + ", \"txMobile\":" + msMobileTx + ", \"rxMobile\":" + msMobileRx + "}";
+              String result = "{\"reboot\":" + msReboot + ", \"totalBytes\":" + totalMobile + ", \"transmittedBytes\":" + msMobileTx + ", \"receivedBytes\":" + msMobileRx + "}";
 
 
 
