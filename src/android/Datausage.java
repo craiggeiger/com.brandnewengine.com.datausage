@@ -16,7 +16,7 @@
        specific language governing permissions and limitations
        under the License.
 */
-package com.brandnewengine;
+package com.brandnewengine.plugins;
 
 import java.util.TimeZone;
 
@@ -31,6 +31,7 @@ import org.json.JSONObject;
 import android.provider.Settings;
 
 public class Datausage extends CordovaPlugin {
+    
     public static final String TAG = "Datausage";
 
     public static String mobileData;                            // Device OS

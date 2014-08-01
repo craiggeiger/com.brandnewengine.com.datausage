@@ -17,6 +17,6 @@
          under the License.
 -->
 
-# org.apache.cordova.device
+# com.brandnewengine.plugins
 
 Test Plugin (Doesn't work --> Don't Use!!!)

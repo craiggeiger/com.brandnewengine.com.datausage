@@ -2,13 +2,13 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com.brandnewengine.datausage"
+    id="com.brandnewengine.plugins.datausage"
     version="0.2.10">
     <name>Datausage</name>
     <description>Cordova Datausage Plugin</description>
     <license>MIT</license>
     
-    <repo>https://github.com/craiggeiger/com.brandnewengine.com.datausage</repo>
+    <repo>https://github.com/craiggeiger/com.brandnewengine.com.plugins.datausage</repo>
 
 
     <js-module src="www/datausage.js" name="datausage">
@@ -19,11 +19,11 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Datausage" >
-                <param name="android-package" value="com.brandnewengine.com.Datausage"/>
+                <param name="android-package" value="com.brandnewengine.com.plugins.Datausage"/>
             </feature>
         </config-file>
 
-        <source-file src="src/android/Datausage.java" target-dir="src/com/brandnewengine/datausage" />
+        <source-file src="src/android/Datausage.java" target-dir="src/com/brandnewengine/plugins/datausage" />
     </platform>
 
 </plugin>
