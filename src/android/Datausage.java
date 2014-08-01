@@ -49,9 +49,7 @@ public class Datausage extends CordovaPlugin {
 
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {
         try {
-            if (action.equals("getMobileDataUsage")) {
-                TelephonyManager tm = (TelephonyManager) this.cordova.getActivity().getSystemService(Context.TELEPHONY_SERVICE);
-                AccountManager am = AccountManager.get(this.cordova.getActivity());
+            if (action.equals("getMobileData")) {
 
                 //String result = "getDetails();"
                 String result = "Hello WORLD.";
