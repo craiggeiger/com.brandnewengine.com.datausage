@@ -65,7 +65,23 @@ public class Datausage extends CordovaPlugin {
               // Total Mobile data
               long totalMobile = mobileTxTime + mobileRxTime;
 
-              String result = "{\"reboot\":" + msReboot + ", \"totalBytes\":" + totalMobile + ", \"transmittedBytes\":" + msMobileTx + ", \"receivedBytes\":" + msMobileRx + "}";
+
+
+              // Get both wifi and mobile Transmitted data
+              long totalTxTime = TrafficStats.getTotalTxBytes(); // transmitted reboot in ms
+              String msTotalTx = Long.toString(totalTxTime);
+
+              // Get both wifi and mobile Received data
+              long totalRxTime = TrafficStats.getTotalRxBytes(); // last reboot i
+              String msTotalRx = Long.toString(totalRxTime);
+
+              // Total both wifi and mobile data
+              long totalData = totalTxTime + totalRxTime;
+
+
+
+
+              String result = "{\"reboot\":" + msReboot + ", \"totalDataBytes\":" + totalData + ", \"totalMobileBytes\":" + totalMobile + ", \"transmittedMobileBytes\":" + msMobileTx + ", \"receivedMobileBytes\":" + msMobileRx + "}";
 
 
 
